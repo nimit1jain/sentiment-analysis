@@ -50,6 +50,12 @@ twitter_df['sentiment'] = twitter_df['sentiment'].map({'positive': 1,
                              'neutral': 0},
                              na_action=None)
 
+count=sns.countplot(data= twitter_df, x= 'sentiment',
+             order = twitter_df['sentiment'].value_counts().index)
+
+plt.show()
+
+
 
 from sklearn.feature_extraction.text import CountVectorizer
 
@@ -58,8 +64,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 #--------EDA----------------
 
 positive = twitter_df[twitter_df['sentiment'] == 1]
-negative = twitter_df[twitter_df['sentiment'] == -1]
-neutral = twitter_df[twitter_df['sentiment'] == 0]
 
 plt.rcParams['figure.figsize'] = (10, 10)
 plt.style.use('fast')
@@ -71,6 +75,7 @@ plt.imshow(wc)
 plt.axis('off')
 plt.show()
 
+negative = twitter_df[twitter_df['sentiment'] == -1]
 
 plt.rcParams['figure.figsize'] = (10, 10)
 plt.style.use('fast')
@@ -83,6 +88,7 @@ plt.axis('off')
 plt.show()
 
 
+neutral = twitter_df[twitter_df['sentiment'] == 0]
 
 plt.rcParams['figure.figsize'] = (10, 10)
 plt.style.use('fast')
@@ -94,11 +100,6 @@ plt.imshow(wc)
 plt.axis('off')
 plt.show()
 
-
-count=sns.countplot(data= twitter_df, x= 'sentiment',
-             order = twitter_df['sentiment'].value_counts().index)
-
-plt.show()
 
 
 
